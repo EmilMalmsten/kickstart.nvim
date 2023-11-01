@@ -14,8 +14,7 @@ Kickstart.nvim is a template for your own configuration.
   explore Neovim!
 
   If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
-  - https://learnxinyminutes.com/docs/lua/
+  a guide. One possible example: - https://learnxinyminutes.com/docs/lua/
 
 
   And then you can explore or search through `:help lua-guide`
@@ -151,12 +150,13 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+    "blazkowolf/gruber-darker.nvim",
+    opts = {
+      bold = false,
+      italic = {
+        strings = false,
+      },
+    },
   },
 
   {
@@ -166,7 +166,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
       },
@@ -233,6 +233,9 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+
+-- set colorscheme
+vim.cmd.colorscheme("gruber-darker")
 
 -- Set highlight on search
 vim.o.hlsearch = false
