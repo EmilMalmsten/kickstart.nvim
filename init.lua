@@ -586,6 +586,7 @@ end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 vim.keymap.set('n', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
+vim.keymap.set('t', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
 
 
 
