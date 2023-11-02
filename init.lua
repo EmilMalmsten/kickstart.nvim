@@ -286,6 +286,9 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
+-- Open netrw
+vim.keymap.set('n', '<leader>pv', '<cmd>:Ex<cr>', { silent = true })
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -587,8 +590,6 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 vim.keymap.set('n', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
 vim.keymap.set('t', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
-
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
