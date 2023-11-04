@@ -216,7 +216,6 @@ require('lazy').setup({
   },
 
   {
-    -- amongst your other plugins
     {'akinsho/toggleterm.nvim', version = "*", config = true}
   },
 
@@ -288,6 +287,14 @@ vim.o.termguicolors = true
 
 -- Open netrw
 vim.keymap.set('n', '<leader>pv', '<cmd>:Ex<cr>', { silent = true })
+
+-- Move text up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+
+-- Stay in visual move when indenting
+vim.keymap.set("v", "<", "<gv", { silent = true })
+vim.keymap.set("v", ">", ">gv", { silent = true })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
