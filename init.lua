@@ -219,6 +219,8 @@ require('lazy').setup({
     {'akinsho/toggleterm.nvim', version = "*", config = true}
   },
 
+  { 'ThePrimeagen/harpoon' },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -597,6 +599,15 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 vim.keymap.set('n', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
 vim.keymap.set('t', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
+
+-- [[ Configure harpoon ]]
+vim.keymap.set("n", "\\a", function() require("harpoon.mark").add_file() end)
+vim.keymap.set("n", "\\e", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set("n", "\\1", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set("n", "\\2", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "\\3", function() require("harpoon.ui").nav_file(3) end)
+vim.keymap.set("n", "\\4", function() require("harpoon.ui").nav_file(4) end)
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
