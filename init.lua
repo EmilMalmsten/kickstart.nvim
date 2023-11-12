@@ -215,10 +215,6 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  {
-    {'akinsho/toggleterm.nvim', version = "*", config = true}
-  },
-
   { 'ThePrimeagen/harpoon' },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -286,6 +282,8 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Open netrw
 vim.keymap.set('n', '<leader>pv', '<cmd>:Ex<cr>', { silent = true })
@@ -585,21 +583,6 @@ cmp.setup {
   },
 }
 
--- [[ Configure toggleterm ]]
-function _G.set_terminal_keymaps()
-  local opts = {buffer = 0}
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-  vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
-end
-
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-vim.keymap.set('n', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
-vim.keymap.set('t', '<C-\\>', '<cmd>exe v:count1 . "ToggleTerm"<CR>')
-
 -- [[ Configure harpoon ]]
 vim.keymap.set("n", "\\a", function() require("harpoon.mark").add_file() end)
 vim.keymap.set("n", "\\e", require("harpoon.ui").toggle_quick_menu)
@@ -607,7 +590,6 @@ vim.keymap.set("n", "\\1", function() require("harpoon.ui").nav_file(1) end)
 vim.keymap.set("n", "\\2", function() require("harpoon.ui").nav_file(2) end)
 vim.keymap.set("n", "\\3", function() require("harpoon.ui").nav_file(3) end)
 vim.keymap.set("n", "\\4", function() require("harpoon.ui").nav_file(4) end)
-
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
